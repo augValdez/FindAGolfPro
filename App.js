@@ -1,7 +1,10 @@
 // In App.js in a new project
+// Augustine Valdez - FindAGolfPro andriod app
+// npx react-native start
+// npx react-native run-android
 
 import * as React from 'react';
-import { Image, ImageBackground, StyleSheet, Button, View, Text } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Button, TouchableOpacity, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MapView from 'react-native-maps';
@@ -12,16 +15,25 @@ const defaultProfile = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro
 const profile = { uri: defaultProfile };
 const background = { uri: defaultBackground };
 
+TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
+const AppButton = ({ onPress, title }) => (
+  <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
+    <Text style={styles.buttonText}>{title}</Text>
+  </TouchableOpacity>
+);
+
 const Stack = createStackNavigator();
 
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
+          <View style={styles.topContainer}>
+            <AppButton title="Pros" onPress={() => navigation.navigate('Pros')} />
+            <AppButton title="Courses" onPress={() => navigation.navigate('Courses')} />
+            <AppButton title="Maps" onPress={() => navigation.navigate('Maps')} />
+          </View>
           <Text style={styles.headertext}>Welcome to FindAGolfPro</Text>
-          <Button title="Pros" onPress={() => navigation.navigate('Pros')} />
-          <Button title="Courses" onPress={() => navigation.navigate('Courses')} />
-          <Button title="Maps" onPress={() => navigation.navigate('Maps')} />
         </ImageBackground>
     </View>
   );
@@ -31,10 +43,12 @@ function ProProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-          <Image source={profile} style={styles.profilepix} />
-          <Text style={styles.headertext}>Pro Screen</Text>
-          <Button title="HOME" onPress={() => navigation.navigate('Home')} />
-          <Button title="Their Course" onPress={() => navigation.navigate('Courses')} />
+            <View style={styles.topContainer}>
+                <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
+                <AppButton title="Their Course" onPress={() => navigation.navigate('Courses')} />
+            </View>
+            <Image source={profile} style={styles.profilepix} />
+            <Text style={styles.headertext}>Pro Screen</Text>
         </ImageBackground>
     </View>
   );
@@ -44,9 +58,11 @@ function CourseScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
+          <View style={styles.topContainer}>
+              <AppButton title="HOME" onPress={() => navigation.navigate('Home')}/>
+              <AppButton title="Pros Here" onPress={() => navigation.navigate('Pros')} />
+          </View>
           <Text style={styles.headertext}>Courses</Text>
-          <Button title="HOME" onPress={() => navigation.navigate('Home')} />
-          <Button title="Pros at this course" onPress={() => navigation.navigate('Pros')} />
         </ImageBackground>
     </View>
   );
@@ -55,8 +71,12 @@ function CourseScreen({ navigation }) {
 function MapsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.headertext}>Maps Screen</Text>
-      <Button title="HOME" onPress={() => navigation.navigate('Home')} />
+        <ImageBackground source={background} style={styles.Sbackground}>
+          <View style={styles.topContainer}>
+              <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
+          </View>
+          <Text style={styles.headertext}>Maps Screen</Text>
+        </ImageBackground>
     </View>
 
   );
@@ -66,8 +86,18 @@ function MapsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: 'row'
   },
+  topContainer: {
+    flexDirection: 'row',
+    margin: 20,
+    height: 50,
+    justifyContent: 'space-evenly'
+  },
+  bottomContainer: {
+      flexDirection: 'row',
+      margin: 20
+    },
   Sbackground: {
     flex: 1,
     alignSelf: 'stretch',
@@ -75,22 +105,44 @@ const styles = StyleSheet.create({
     resizeMode: "cover"
   },
   profilepix: {
-      width: 50,
-      height: 50,
-      alignSelf: "flex-start"
+      width: 100,
+      height: 100,
+      paddingHorizontal: 15,
+      paddingVertical: 15,
+      alignSelf: "flex-start",
+      margin: 20
     },
   bodytext: {
     color: "white",
     fontSize: 36,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000a0"
+    backgroundColor: "#000000a0",
+    margin: 20
   },
   headertext: {
     color: "white",
     fontSize: 36,
     fontWeight: "bold",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    margin: 20
+  },
+  buttonContainer: {
+    elevation: 1,
+    backgroundColor: "#009688",
+    borderRadius: 30,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: 120,
+    margin: 5
+//    justifyContent: "space-around"
+  },
+  buttonText: {
+    fontSize: 12,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
   }
 });
 
