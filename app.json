@@ -1,4 +1,15 @@
 {
   "name": "findapro",
-  "displayName": "findapro"
+  "displayName": "findapro",
+  "expo": {
+    "android": {
+      "package": "com.company",
+      "config": {
+        "googleMaps": {
+          "apiKey": "<AIzaSyA3zKzUi3fGw5WT8R7AaWsmHHutsIy7u4U>"
+        }
+      }
+    }
+  }
+
 }

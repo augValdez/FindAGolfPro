@@ -1,4 +1,4 @@
-// In App.js in a new project
+//
 // Augustine Valdez - FindAGolfPro andriod app
 // npx react-native start
 // npx react-native run-android
@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Image, ImageBackground, StyleSheet, Button, TouchableOpacity, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 
 const defaultBackground = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultBackground.jpg';
@@ -28,12 +28,13 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-          <View style={styles.topContainer}>
-            <AppButton title="Pros" onPress={() => navigation.navigate('Pros')} />
-            <AppButton title="Courses" onPress={() => navigation.navigate('Courses')} />
-            <AppButton title="Maps" onPress={() => navigation.navigate('Maps')} />
-          </View>
-          <Text style={styles.headertext}>Welcome to FindAGolfPro</Text>
+            <Text style={styles.headertext}>Welcome to FindAGolfPro</Text>
+            <View style={styles.bottomContainer}>
+                <AppButton title="Pros" onPress={() => navigation.navigate('Pros')} />
+                <AppButton title="Courses" onPress={() => navigation.navigate('Courses')} />
+                <AppButton title="Maps" onPress={() => navigation.navigate('Maps')} />
+            </View>
+
         </ImageBackground>
     </View>
   );
@@ -43,7 +44,7 @@ function ProProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-            <View style={styles.topContainer}>
+            <View style={styles.bottomContainer}>
                 <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
                 <AppButton title="Their Course" onPress={() => navigation.navigate('Courses')} />
             </View>
@@ -58,7 +59,7 @@ function CourseScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-          <View style={styles.topContainer}>
+          <View style={styles.bottomContainer}>
               <AppButton title="HOME" onPress={() => navigation.navigate('Home')}/>
               <AppButton title="Pros Here" onPress={() => navigation.navigate('Pros')} />
           </View>
@@ -72,13 +73,15 @@ function MapsScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-          <View style={styles.topContainer}>
-              <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
+        <Text style={styles.headertext}>Maps Screen</Text>
+        <MapView style={{height: '70%', width: '90%', alignSelf: "center"}}
+            provider={PROVIDER_GOOGLE}
+            showsUserLocation={true} />
+          <View style={styles.bottomContainer}>
+              <AppButton title="HOME PAGE" onPress={() => navigation.navigate('Home')} />
           </View>
-          <Text style={styles.headertext}>Maps Screen</Text>
         </ImageBackground>
     </View>
-
   );
 }
 
@@ -95,8 +98,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly'
   },
   bottomContainer: {
-      flexDirection: 'row',
-      margin: 20
+    height: 50,
+    position: 'absolute',
+    flexDirection: 'row',
+    marginBottom: 10,
+    marginLeft: 1.5,
+    bottom: 0
     },
   Sbackground: {
     flex: 1,
