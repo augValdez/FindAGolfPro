@@ -7,8 +7,7 @@ import * as React from 'react';
 import { Image, ImageBackground, StyleSheet, Button, TouchableOpacity, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 const defaultBackground = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultBackground.jpg';
 const defaultProfile = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultProfile.jpg';
@@ -28,7 +27,9 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-            <Text style={styles.headertext}>Welcome to FindAGolfPro</Text>
+            <Text style={styles.headertext}>Welcome to FindAPro</Text>
+            <Text style={styles.bodytext}>This app has the goal in mind for all types of golfers! </Text>
+            <Text style={styles.bodytext}>Find what YOU need whether you need a Golf Pro to teach you the basics, or a specailized Pro to hone in your skills!</Text>
             <View style={styles.bottomContainer}>
                 <AppButton title="Pros" onPress={() => navigation.navigate('Pros')} />
                 <AppButton title="Courses" onPress={() => navigation.navigate('Courses')} />
@@ -69,14 +70,36 @@ function CourseScreen({ navigation }) {
   );
 }
 
+// creating the list of locations for the golf courses
+//function courseMarkers() {
+//  const { latitude, longitude, latitudeDelta, longitudeDelta } = initialRegion;
+//  return
+//
+//}
+
 function MapsScreen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
         <Text style={styles.headertext}>Maps Screen</Text>
-        <MapView style={{height: '70%', width: '90%', alignSelf: "center"}}
+        <MapView style={styles.map}
+            initialRegion={{
+                    latitude: 40.5621704,
+                    longitude: -112.0018521,
+                    latitudeDelta: 0.1,
+                    longitudeDelta: 0.1
+            }}
             provider={PROVIDER_GOOGLE}
-            showsUserLocation={true} />
+            showsUserLocation={true}>
+            <MapView.Marker
+                coordinate={{latitude: 40.5722237, longitude: -112.0018521}}
+                title={"Glenmoor Golf Course"}
+                description={" 9800 S 4800 W, South Jordan, UT 84095"}/>
+            <MapView.Marker
+                coordinate={{latitude: 40.713998, longitude: -111.9977157}}
+                title={"Stonebrdige Golf Club"}
+                description={"4415 Links Drive, West Valley City, UT 84120"}/>
+        </MapView>
           <View style={styles.bottomContainer}>
               <AppButton title="HOME PAGE" onPress={() => navigation.navigate('Home')} />
           </View>
@@ -120,10 +143,10 @@ const styles = StyleSheet.create({
     },
   bodytext: {
     color: "white",
-    fontSize: 36,
+    fontSize: 26,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000a0",
+//    backgroundColor: "#000000a0",
     margin: 20
   },
   headertext: {
@@ -149,6 +172,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "center",
     textTransform: "uppercase"
+  },
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
   }
 });
 
