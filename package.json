@@ -7,13 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "startdb": "node databaseconnection.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.4",
-    "pg": "^8.5.1",
+    "pg": "^8.6.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-gesture-handler": "^1.10.3",
@@ -34,5 +35,18 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augValdez/FindAGolfPro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/augValdez/FindAGolfPro/issues"
+  },
+  "homepage": "https://github.com/augValdez/FindAGolfPro#readme",
+  "description": ""
 }
