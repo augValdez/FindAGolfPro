@@ -1,6 +1,5 @@
 const { Client } = require('pg');
 
-
 DATABASE_HOST="localhost"
 DATABASE="postgres"
 DATABASE_USERNAME="my_user"
@@ -22,4 +21,4 @@ client.query('SELECT * FROM course;', (err, result) => {
         console.log(result.rows);
     }
     client.end();
-})
+});

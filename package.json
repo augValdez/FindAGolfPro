@@ -8,12 +8,15 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "startdb": "node databaseconnection.js"
+    "startpdb": "node dbproconnection.js",
+    "startcdb": "node dbcourseconnection.js",
+    "data": "node importData.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.4",
+    "papaparse": "^5.3.0",
     "pg": "^8.6.0",
     "react": "16.13.1",
     "react-native": "0.63.4",

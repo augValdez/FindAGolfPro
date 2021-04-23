@@ -1,15 +1,9 @@
 import * as React from 'react';
-import { Image, ImageBackground, StyleSheet, Button, TouchableOpacity, View, Text } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Button, TouchableOpacity, View, Text, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
-
-// default images
 const defaultBackground = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultBackground.jpg';
-const defaultProfile = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultProfile.jpg';
-// setting the images to their value of the individual - if null = defaults
-const profile = { uri: defaultProfile };
 const background = { uri: defaultBackground };
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
@@ -19,36 +13,18 @@ const AppButton = ({ onPress, title }) => (
   </TouchableOpacity>
 );
 
-function MapsScreen({ navigation }) {
+function darciOlsen({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
-        <Text style={styles.headertext}>Maps Screen</Text>
-        <MapView style={styles.map}
-            initialRegion={{
-                    latitude: 40.5621704,
-                    longitude: -112.0018521,
-                    latitudeDelta: 0.45,
-                    longitudeDelta: 0.45
-            }}
-            provider={PROVIDER_GOOGLE}
-            showsUserLocation={true}>
-
-            <MapView.Marker
-                coordinate={{latitude: 40.5722237, longitude: -112.0018521}}
-                title={"Glenmoor Golf Course"}
-                description={" 9800 S 4800 W, South Jordan, UT 84095"}/>
-            <MapView.Marker
-                coordinate={{latitude: 40.713998, longitude: -111.9977157}}
-                title={"Stonebridge Golf Club"}
-                description={"4415 Links Drive, West Valley City, UT 84120"}/>
-        </MapView>
-        <View style={styles.bottomContainer}>
-            <AppButton title="HOME PAGE" onPress={() => navigation.navigate('Home')} />
-        </View>
+            <View style={styles.bottomContainer}>
+                <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
+                <AppButton title="Their Course" onPress={() => navigation.navigate('Course')} />
+                <AppButton title="Map" onPress={() => navigation.navigate('Map')} />
+            </View>
         </ImageBackground>
     </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
@@ -70,6 +46,62 @@ const styles = StyleSheet.create({
     marginLeft: 1.5,
     bottom: 0
     },
+   bodyContainer: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginBottom: 0,
+    top: 20
+   },
+   textContainer: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: 125
+   },
+   bodyContainer2: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 150,
+    marginBottom: 5,
+    top: 20
+   },
+   textContainer2: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: 275
+  },
+   bodyContainer3: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 300,
+    marginBottom: 5,
+    top: 20
+   },
+   textContainer3: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: 430
+  },
+   bodyContainer4: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 450,
+    marginBottom: 5,
+    top: 20
+   },
+   textContainer4: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: 580
+  },
+
   Sbackground: {
     flex: 1,
     alignSelf: 'stretch',
@@ -86,7 +118,7 @@ const styles = StyleSheet.create({
     },
   bodytext: {
     color: "white",
-    fontSize: 26,
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
 //    backgroundColor: "#000000a0",
@@ -124,4 +156,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MapsScreen;
+export default darciOlsen;
