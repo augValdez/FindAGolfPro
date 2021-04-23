@@ -11,6 +11,10 @@ const defaultProfile = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro
 // setting the images to their value of the individual - if null = defaults
 const profile = { uri: defaultProfile };
 const background = { uri: defaultBackground };
+const stonebridge = { uri : 'https://www.golfstonebridgeutah.com/media/com_twojtoolbox/stonebridge%2023.jpg'};
+const fourlakes = { uri : 'https://lirp.cdn-website.com/cf374a4f/dms3rep/multi/opt/180727-TA-Barker-112_%283%29-1920w.jpg' };
+const nibley = { uri : 'https://lh5.googleusercontent.com/p/AF1QipNw4WxXDXFY5Epp7-O58M50-zIrS30sHERRgSQW=w408-h272-k-no' };
+
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 const AppButton = ({ onPress, title }) => (
@@ -31,7 +35,11 @@ function HomeScreen({ navigation }) {
                 <AppButton title="Courses" onPress={() => navigation.navigate('Course')} />
                 <AppButton title="Maps" onPress={() => navigation.navigate('Map')} />
             </View>
-
+            <View style={{alignSelf: "center", flexDirection: 'row', marginLeft: 0}}>
+                <Image source={stonebridge} style={styles.profilepix} />
+                <Image source={fourlakes} style={styles.profilepix} />
+                <Image source={nibley} style={styles.profilepix} />
+            </View>
         </ImageBackground>
     </View>
   );
