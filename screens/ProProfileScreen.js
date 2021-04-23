@@ -13,15 +13,11 @@ const examplepro =
         rates: 'LESSON RATES{"\\n"}(Adult) Single Lesson $80/hour $40/half hour{"\\n"}(Adult) 3 1-hour lesson Pack $225{"\\n"}(Adult) 3 30-min lesson Pack $105{"\\n"}(Junior) Single Lesson $65/hour $35/half hour{"\\n"}(Junior) 3 1-hour lesson Pack $180{"\\n"}(Junior) 3 30-min lesson Pack $90{"\\n"}*Each additional person is $10 per lesson time{"\\n"}',
         id: 1
       }
-
-const sirenelink = 'https://goaztecs.com/images/2018/7/11/11309567.jpeg?width=300';
-const sirene = { uri : sirenelink };
-const paullink = 'https://media-exp1.licdn.com/dms/image/C5603AQH6n7TcEXaBDg/profile-displayphoto-shrink_800_800/0/1517363368264?e=1624492800&v=beta&t=_Fzd_Kb-ohPJtBHlKmGb7KrBoo31g-xX72P5ma2IouE';
-const paul = { uri : paullink };
-const chrislink = 'https://utahutes.com/images/2016/4/15/2317965.jpeg?width=300';
-const chris = { uri : chrislink };
-const troylink = 'https://photos.bluegolf.com/40/8d/3d/18/5b484d109678611eda50c410_s.jpg';
-const troy = { uri : troylink };
+// this is the links to the images for the pros - not to keep but to demo project for 4/22
+const sirene = { uri : 'https://goaztecs.com/images/2018/7/11/11309567.jpeg?width=300' };
+const paul = { uri : 'https://media-exp1.licdn.com/dms/image/C5603AQH6n7TcEXaBDg/profile-displayphoto-shrink_800_800/0/1517363368264?e=1624492800&v=beta&t=_Fzd_Kb-ohPJtBHlKmGb7KrBoo31g-xX72P5ma2IouE' };
+const chris = { uri : 'https://utahutes.com/images/2016/4/15/2317965.jpeg?width=300' };
+const troy = { uri : 'https://photos.bluegolf.com/40/8d/3d/18/5b484d109678611eda50c410_s.jpg' };
 
 // default images
 const defaultBackground = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultBackground.jpg';

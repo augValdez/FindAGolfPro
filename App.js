@@ -14,7 +14,8 @@ import HomeScreen from './screens/HomeScreen'
 import MapScreen from './screens/MapScreen'
 import ProsScreen from './screens/ProProfileScreen'
 import CourseScreen from './screens/CourseScreen'
-import darciOlsen from './darciOlsen'
+import darciOlsen from './proProfiles/darciOlsen'
+import golfglenmoor from './courseProfiles/glenmoorGolfCourse'
 
 // COURSES
 // INSERT INTO Course (name, address, latitude, longitude, courseimage) values ('Glenmoor Golf Course', '9800 S 4800 W, South Jordan, UT 84095', 40.5722237,  -112.0018521, 'https://golfglenmoor.com/wp-content/uploads/2021/04/golf-course-and-rates.jpg');
@@ -57,6 +58,11 @@ function RootStack() {
         component={darciOlsen}
         options={{ headerShown: false }}
       />
+      <HomeStack.Screen
+        name="golfglenmoor"
+        component={golfglenmoor}
+        options={{ headerShown: false }}
+       />
     </HomeStack.Navigator>
   );
 }

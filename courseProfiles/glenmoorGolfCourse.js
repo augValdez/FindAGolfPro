@@ -6,16 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 const defaultBackground = 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultBackground.jpg';
 const background = { uri: defaultBackground };
 
-const examplepro =
-  {
-    name: 'Darci Olsen',
-    title: 'Head Professional - Class A PGA Professional',
-    homecourse: 'Glenmoor Golf Course',
-    contact: 'email: darciolsen@pga.com',
-    imagelink: 'https://utahpga.com/wp-content/uploads/2019/10/IMG_1064-e1570833734766-scaled.jpg',
-    rates: 'LESSON RATES\n(Adult) Single Lesson $80/hour $40/half hour\n(Adult) 3 1-hour lesson Pack $225\n(Adult) 3 30-min lesson Pack $105\n(Junior) Single Lesson $65/hour $35/half hour\n(Junior) 3 1-hour lesson Pack $180\n(Junior) 3 30-min lesson Pack $90\n*Each additional person is $10 per lesson time\n',
-    id: 1
-  }
+const darci = { uri : 'https://utahpga.com/wp-content/uploads/2019/10/IMG_1064-e1570833734766-scaled.jpg' };
+const sirene = { uri : 'https://goaztecs.com/images/2018/7/11/11309567.jpeg?width=300' };
+const defaultP = { uri : 'https://raw.githubusercontent.com/augValdez/FindAGolfPro/main/defaultProfile.jpg' };
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 const AppButton = ({ onPress, title }) => (
@@ -24,19 +17,47 @@ const AppButton = ({ onPress, title }) => (
   </TouchableOpacity>
 );
 
-function darciOlsen({ navigation }) {
+const ImageButton = ({ onPress, name }) => (
+  <TouchableOpacity onPress={onPress} >
+    <Image source={darci} style={styles.profilepix} />
+  </TouchableOpacity>
+);
+
+const examplecourse = (
+      {
+        id: 8,
+        name: 'Glenmoor Golf Course',
+        address: '9800 S 4800 W, South Jordan, UT 84095',
+        latitude: '40.5722237',
+        longitude: '-112.0018521',
+        courseimage: 'https://golfglenmoor.com/wp-content/uploads/2021/04/golf-course-and-rates.jpg'
+      }
+)
+const quote = ( { value : '\n\nGolf Pros at Glenmoor!' } )
+
+function golfglenmoor({ navigation }) {
   return (
     <View style={styles.container}>
         <ImageBackground source={background} style={styles.Sbackground}>
             <View style={styles.bottomContainer}>
                 <AppButton title="HOME" onPress={() => navigation.navigate('Home')} />
-                <AppButton title="Their Course" onPress={() => navigation.navigate('Course')} />
+                <AppButton title="all courses" onPress={() => navigation.navigate('Course')} />
                 <AppButton title="Map" onPress={() => navigation.navigate('Map')} />
             </View>
-            <Text style={styles.headertext}>{examplepro.name}</Text>
-            <Text style={styles.bodytext}>{examplepro.title}</Text>
-            <Image source={{uri: examplepro.imagelink}} style={styles.profileImage} />
-            <Text style={styles.ratestext}>{examplepro.rates}</Text>
+            <Text style={styles.headertext}>{examplecourse.name}</Text>
+            <Text style={styles.bodytext}>{examplecourse.address}</Text>
+            <Image source={{uri: examplecourse.courseimage}} style={styles.profileImage} />
+            <Text style={styles.headertext}>{quote.value}</Text>
+            <View style={styles.bodyContainer4}>
+                <ImageButton name="darci" onPress={() => navigation.navigate('darciO')} />
+                <Image source={sirene} style={styles.profilepix} />
+                <Image source={defaultP} style={styles.profilepix} />
+            </View>
+            <View style={styles.textContainer4}>
+                <Text style={styles.bodytext}>     Darci Olsen</Text>
+                <Text style={styles.bodytext}>             Sirene Blair</Text>
+                <Text style={styles.bodytext}>        Weston Wheeler</Text>
+            </View>
         </ImageBackground>
     </View>
     );
@@ -99,8 +120,8 @@ const styles = StyleSheet.create({
    textContainer3: {
     position: 'absolute',
     flexDirection: 'row',
-    justifyContent: 'center',
-    top: 430
+    justifyContent: 'space-between',
+    top: 440
   },
    bodyContainer4: {
     position: 'absolute',
@@ -114,7 +135,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     justifyContent: 'center',
-    top: 580
+    top: 590
   },
 
   Sbackground: {
@@ -134,9 +155,8 @@ const styles = StyleSheet.create({
   profileImage: {
     width: 200,
     height: 200,
-    alignSelf: "flex-start",
-    margin: 10,
-    marginLeft: 30
+    alignSelf: "center",
+    margin: 10
   },
   ratestext: {
     color: "white",
@@ -186,4 +206,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default darciOlsen;
+export default golfglenmoor;
