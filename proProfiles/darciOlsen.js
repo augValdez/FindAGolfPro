@@ -37,6 +37,8 @@ function darciOlsen({ navigation }) {
             <Text style={styles.bodytext}>{examplepro.title}</Text>
             <Image source={{uri: examplepro.imagelink}} style={styles.profileImage} />
             <Text style={styles.ratestext}>{examplepro.rates}</Text>
+            <Text style={styles.ratestext}>{examplepro.contact}</Text>
+            <Text style={styles.headertext}>Home Course : Glenmoor Golf Course</Text>
         </ImageBackground>
     </View>
     );
